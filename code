@@ -12,27 +12,39 @@ namespace jun1
     {
         static void Main(string[] args)
         {
-            int[,] array = new int[5, 4];
-            Random random= new Random();
+            int arrayLenght = 4;
+            int arrayHeight = 5;
+            int arrayString = 1;
+            int arrayColumn = 0;
+            int minRandom = 1;
+            int maxRandom = 10;
+            int[,] numbers = new int[arrayHeight, arrayLenght];
+            Random random = new Random();
             int sum = 0;
             int composition = 1;
-            int finishSum;
-
-            for (int i = 0; i < array.GetLength(0); i++)
+            
+            for (int i = 0; i < numbers.GetLength(arrayColumn); i++)
             {
-                for (int j = 0; j < array.GetLength(1); j++)
+                for (int j = 0; j < numbers.GetLength(arrayString); j++)
                 {
-                    array[i, j] = random.Next(0, 10);
-                    sum += array[1, j];
-                    Console.Write(array[i, j] + " ");
+                    numbers[i, j] = random.Next(minRandom, maxRandom);
+
+                    Console.Write(numbers[i, j] + " ");
                 }
-                composition *= array[i, 0];
                 Console.WriteLine();
             }
 
-            finishSum = sum / (array.GetLength(0) - 1);
+            for (int i = 0; i < numbers.GetLength(arrayString); i++)
+            {
+                sum += numbers[arrayString, i];
+            }
 
-            Console.WriteLine("Сумма = " + finishSum);
+            for (int i = 0; i < numbers.GetLength(arrayColumn); i++)
+            {
+                composition *= numbers[i, arrayColumn];
+            }
+            
+            Console.WriteLine("Сумма = " + sum);
             Console.WriteLine("Произведение = " + composition);
         }
     }
